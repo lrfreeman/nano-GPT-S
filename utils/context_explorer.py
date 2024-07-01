@@ -25,3 +25,5 @@ def explore_how_context_works(block_size: int = 8):
         logger.info(f"when input is {context} the target (y_h) is: {target}")
         count += 1
     logger.info(f"Total number of sequences is: {count} with a block size of {block_size}")
+    
+    

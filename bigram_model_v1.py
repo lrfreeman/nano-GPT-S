@@ -1,6 +1,10 @@
 """A simple bigram model that predicts the next character given the current character leveraging the PyTorch library.
 This is based on the hero to zero series by Karpathy. NOTE to turn on PEDAGOGICAL_MODE to see logs explaining the code. 
-Used as a teaching tool for myself to remeber how things work."""
+Used as a teaching tool for myself to remeber how things work.
+
+Positional information in a bigram model is not considered and therefore, the information is not used.
+
+"""
 
 from loguru import logger
 import torch
@@ -9,19 +13,20 @@ from torch.nn import functional as F
 
 from utils.embedding import Embedding
 from utils.load_corpus import LoadCorpus
-from utils.context_explorer import explore_how_context_works
 from utils.data_splitting import test_train_split, get_batch
 
 class BigramLanguageModel(nn.Module):
     """A simple bigram model that predicts the next character given the current character.
     This is based on the hero to zero series by Karpathy."""
 
-    def __init__(self, vocab_size):
+    def __init__(self, vocab_size, n_embed=32, block_size=8):
         super().__init__()
         # each token directly reads off the logits for the next token from a lookup table
         self.token_embedding_table = self.create_lookup_table_for_embeddings(vocab_size)
+        self.lm_head = nn.Linear(n_embed, vocab_size) # This is the output layer that maps the dense vector to the vocab size, language model head  
+        self.position_embedding = nn.Embedding(block_size, n_embed)
 
-    def create_lookup_table_for_embeddings(self, vocab_size):
+    def create_lookup_table_for_embeddings(self, vocab_size, n_embed=32):
         """
         Creates a lookup table for embeddings using nn.Embedding.
 
@@ -29,17 +34,15 @@ class BigramLanguageModel(nn.Module):
         In the context of a bigram model, we use a vocab_size by vocab_size matrix where each 
         token directly reads off the logits for the next token. At start the logits are randomly
         initialised and are updated during training.
-        
-        NOTE:
-         -- Keen to dig deeper into why not applying softmax here to convert logits to probabilities.
 
         Args:
             vocab_size (int): The size of the vocabulary.
+            n_embed (int): The number of dimensions to embed the characters in.
 
         Returns:
             nn.Embedding: The embedding layer initialized to vocab_size by vocab_size.
         """
-        return nn.Embedding(vocab_size, vocab_size)
+        return nn.Embedding(vocab_size, n_embed)
 
     def forward(self, idx, targets=None):
         """Using a set of fixed weights to predict the target token given the input sequence
@@ -51,9 +54,17 @@ class BigramLanguageModel(nn.Module):
                     The target sequence of tokens of shape (B, T) where B is the batch size and T is the sequence 
                     length. NOTE: This is optional and only used during training, if empty the function will return 
                     None for loss and only produce logits."""
+        
+        B, T = idx.shape
+        
 
         # idx and targets are both (B,T) tensor of integers
-        logits = self.token_embedding_table(idx) # (B,T,C) - C is the number of channels, in this case the vocab size
+        token_embed = self.token_embedding_table(idx) # (B,T,C) - C is the number of channels, i.e features in the embedding, this maps to n_embed in this example 
+        pos_embed = self.position_embedding(torch.arange(T, device=idx.device)) # (T, C) Create a position embedding for each token in the sequence
+        pos_embed = pos_embed.unsqueeze(0) # (1, T, C) Add a batch dimension to the position embedding
+        # the C dimension is required so that each token can be mapped to a dense vector so that the model can learn the relationships between tokens
+        x = token_embed + pos_embed # Add the token and position embeddings together
+        logits = self.lm_head(x) # (B,T, vocab_size)
 
         # If no targets are provided, return only the logits, this is so we generate text
         if targets is None:
@@ -62,11 +73,10 @@ class BigramLanguageModel(nn.Module):
         # If targets are provided, calculate the cross entropy loss
         else:
             B, T, C = logits.shape
-            logits_reshaped = torch.einsum('btc->(bt)c', logits)
-            logits = logits_reshaped
+            logits = logits.view(B*T, C) # Flatten the logits
             assert logits.shape == (B*T, C), "The shape of the logits is not as expected."
             # targets = targets.view(B*T) # Flatten the targets
-            targets = torch.einsum('bt->(bt)', targets) # Flatten the target into a 1d tensor
+            targets = targets.view(-1) # Flatten the targets
             loss = F.cross_entropy(logits, targets) # Compute the cross entropy loss
 
         return logits, loss
@@ -104,43 +114,65 @@ class BigramLanguageModel(nn.Module):
 
 if __name__ == "__main__":
     
-    PEDAGOGICAL_MODE = True
-    logger.info("Running the bigram model")
-    url = "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt"
-    corpus = LoadCorpus(url).text
-    embedding_obj = Embedding(corpus, PEDAGOGICAL_MODE=PEDAGOGICAL_MODE)
-    data = embedding_obj.embedded_data
-    
     # Hyper parameters
-    torch.manual_seed(1337)
     test_split = 0.1
-    block_size = 8 # Also known as the sequence length (LSTM) or context size (LLM or Transformer)
-    batch_size = 4 # how many independent sequences will we process in parallel?
+    block_size = 8 # Also known as the sequence length (LSTM) or context size (LLM or Transformer) - What is the maxium context size we want to consider?
+    max_iters = 3000 # how many iterations to train for
+    eval_interval = 100 # how often to evaluate the model
+    lr = 1e-3 # learning rate
+    eval_iters = 100 # how many iterations to average the loss over when evaluating
+    n_embed = 32 # how many dimensions to embed the characters in
+    batch_size = 4 # how many independent sequences will we process in parallel? 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if device.type == "cuda": 
         logger.info("Using the GPU")  
     else: 
         logger.info("Using the CPU")
+    #--------------------------------------------------
 
-
-    # Split the data into train and validation sets
+    torch.manual_seed(1337)
+    
+    logger.info("Running the bigram model")
+    url = "https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt"
+    corpus = LoadCorpus(url).text
+    embedding_obj = Embedding(corpus)
+    data = embedding_obj.embedded_data
     train_data, val_data = test_train_split(data, test_split=test_split)
-    
-    if PEDAGOGICAL_MODE:
-        explore_how_context_works()
-        xb, yb = get_batch('train', train_data, val_data, block_size, batch_size, device=device, P) # Get a single bathc to see how the data looks like
-        logger.info(f"Input batch shape: {xb.shape}, Target batch shape: {yb.shape}")
-        print(f"Input batch (in embedded form): \n {xb}")
-        logger.info("Note that the number of rows or examples in the batch is the batch size. The number of columns or features is the block size. The target batch is the input batch shifted by one.")
-        model = BigramLanguageModel(vocab_size=embedding_obj.vocab_size)
-        model = model.to(device)
+    model = BigramLanguageModel(vocab_size=embedding_obj.vocab_size)
+    model = model.to(device)
+
+    # helps estimate an arbitrarily accurate loss over either split using many batches
+    @torch.no_grad()
+    def estimate_loss():
+        out = {}
+        model.eval()
+        for split in ['train', 'val']:
+            losses = torch.zeros(eval_iters)
+            for k in range(eval_iters):
+                X, Y = get_batch(split, train_data, val_data, block_size, batch_size, device=device)
+                logits, loss = model(X, Y)
+                losses[k] = loss.item()
+            out[split] = losses.mean()
+        model.train()
+        return out
+        
+    optimiser = model.optimiser()
+
+    for iter in range(max_iters):
+        
+        # every once in a while, evaluate the loss
+        if iter % eval_interval == 0:
+            losses = estimate_loss()
+            logger.info(f"Iteration: {iter}, Train loss: {losses['train']}, Val loss: {losses['val']}")
+            
+        # get a batch of data
+        xb, yb = get_batch('train', train_data, val_data, block_size, batch_size, device=device) # Get a single bathc to see how the data looks like
+
+        # evaluate the model
         logits, loss = model(xb, yb)
-        logger.info(f"Note the vocab size is: {embedding_obj.vocab_size}. This is the number of unique characters in the text.")
-        logger.info(f"The logits have shape: {logits.shape}. This is the (batch size * block size, vocab size) tensor.")
-        logger.info("As there is one prediction of the next token per sequence you have this first dimension. The second dimension is the logits applied to each token in the vocabulary.")
-        logger.info("Thus at each sequence you basically make 65 predictions (assuming the vocab size is 65) assigning a logit to each possible token.")
-        logger.info(f"The way to think about the loss or cross entropy in this case is that we have a 1 / {embedding_obj.vocab_size} chance in predicting the next token correctly.")
-        logger.info(f"The loss and the logits are: {loss}, {logits}")
-    
-    idx = torch.zeros((1, 1), dtype=torch.long, device=device) # This is the start token to kick off the generation. Single batch and single token
-    print(embedding_obj.decode(model.generate(idx, max_new_tokens=100)[0].tolist()))
+        model.optimiser().zero_grad(set_to_none=True)
+        loss.backward()
+        optimiser.step()
+
+context = torch.zeros((1,1), dtype=torch.long, device=device)
+print(embedding_obj.decode(model.generate(context, max_new_tokens=100)[0].tolist())) # Generate 100 new tokens

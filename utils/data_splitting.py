@@ -8,7 +8,7 @@ def test_train_split(data, test_split=0.1):
     val_data = data[n:]
     return train_data, val_data
 
-def get_batch(split, train_data, val_data, block_size, batch_size, PEDAGOGICAL_MODE=False):
+def get_batch(split, train_data, val_data, block_size, batch_size, device, PEDAGOGICAL_MODE=False):
     """Extract random sequences of length block_size from the data. Return as input and target pairs.
     NOTE - The batches are not sequential and may overlap.
     
@@ -37,4 +37,5 @@ def get_batch(split, train_data, val_data, block_size, batch_size, PEDAGOGICAL_M
         logger.info("The batches are random and may overlap. This is good for small datasets but could lead to overfitting. It is computationally expensive but provides more data to learn from.")
         logger.info("Be mindful on the correct indexing of the input and target sequences.")
     
+    x, y = x.to(device), y.to(device)
     return x, y
