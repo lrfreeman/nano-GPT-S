@@ -1,7 +1,9 @@
 """ 
 
 A simple decoder bigram model that predicts the next character given the current character 
-leveraging the PyTorch library. This is based on the hero to zero series by Karpathy. 
+leveraging the PyTorch library. This is based on the hero to zero series by Karpathy. And
+is effectively a zero layer neural network (no hidden layers) that uses a lookup table (technically 
+an embedding layer) to predict the next token given the current token.
 
 """
 
@@ -41,9 +43,7 @@ train_data, val_data = test_train_split(data, test_split=test_split)
 vocab_size = embedding_obj.vocab_size
 
 class BigramLanguageModel(nn.Module):
-    """ A simple character based model that utilises bigram statistics.
-        The model learns because there are weights contained within the
-        embedding table that are updated during training. """
+    """ A simple character based model that utilises bigram statistics """
 
     def __init__(self):
         super().__init__()
