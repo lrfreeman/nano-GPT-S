@@ -1,7 +1,7 @@
 """ 
 
-A simple decoder bigram model that predicts the next character given the current character 
-leveraging the PyTorch library. This is based on the hero to zero series by Karpathy. 
+Transformer decoder only architecture matching closely to attention is all you need papper leveraging the PyTorch library. 
+This is based on the hero to zero series by Karpathy. 
 
 """
 
@@ -53,12 +53,18 @@ class MultiHeadAttention(nn.Module):
         self.dropout = nn.Dropout(dropout) # Regularisation technique to prevent overfitting
         
     def forward(self, x):
-        out = torch.cat([head(x) for head in self.heads], dim=-1) # A way to pull all of the heads together and concatenate them along the last dimension
+        out = torch.cat([head(x) for head in self.heads], dim=-1) # A way to pull all of the heads together and concatenate them along the last dimension (channel dimension)
         out = self.dropout(self.proj(out))
         return out
 
 class FeedForward(nn.Module):
-    """ A simple multi-layerd-perceptron (MLP) with each lyaer followed by a ReLU non-linearity """
+    """ A simple multi-layerd-perceptron (MLP) with each lyaer followed by a ReLU non-linearity]
+        the ffn is to allow each token to have a more complex relationship with the communication it receives from other tokens
+        in the sequence. This happens on a per token basis. I.e this is the computation part of the transformer block. 
+        Where as the communication part is the self attention part. 
+        
+        In the og paper the embedding size is 512 and the hidden layer size is 2048. So we 
+        leave here x4 as the hidden layer size."""
     
     # why *4 ?
     def __init__(self, n_embd):
@@ -93,8 +99,11 @@ class Head(nn.Module):
         B, T, C = x.shape
         k = self.key(x) # (B, T, C)
         q = self.query(x) # (B, T, C)
-        wei = q @ k.transpose(-2, -1) # (B, T, T) # compute attention scores (afinity between keys and queries)
-        wei = wei * C ** (-0.5) # scale by the dimensionality of the head size (B, T, T) - Stability trick
+        k = k.transpose(-2, -1) # (B, C, T) - Transpose the key tensor
+        # (B, T, C) @ (B, C, T) = (B, T, T) - This is the dot product between the query and the key
+        wei = q @ k # (B, T, T) # compute attention scores (afinity between keys and queries)
+        wei = wei * C ** (-0.5) # scale by the dimensionality of the head size (B, T, T) - Stability trick 
+        # to prevent the weights from getting too large or too small which can cause one hot encodings to dominate the softmax
         # Note that in wei the affinities are autoregressive with increasing time steps starting from the current token
         # and ending with predicting the last token in the sequence using all the previous tokens in the sequence
         wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf')) # mask out the future tokens (B, T, T)
@@ -115,26 +124,28 @@ class Block(nn.Module):
     
     def __init__(self, n_embd, n_head):
         super().__init__()
-        head_size = n_embd // n_head # why
+        head_size = n_embd // n_head # The size of each head is determined by the number of heads and the embedding size to maintain the dimensionality as if there was only one head
         self.sa = MultiHeadAttention(n_head, head_size) # self attention
         self.ffwd = FeedForward(n_embd)
         self.ln1 = nn.LayerNorm(n_embd) # Basically a fancy z-score normalisation with affine learnable parameters so your data doesn't need to be gaussian
         self.ln2 = nn.LayerNorm(n_embd)
         
     def forward(self, x):
+        """Where both the attention layer and the ffwd layer write to the residual stream"""
         # x is (B, T, Embd)
         x = x + self.sa(self.ln1(x)) # Self attention, layer normalisation and residual connection
         x = x + self.ffwd(self.ln2(x))
         return x
 
-class BigramLanguageModel(nn.Module):
-    """ A simple character based model that utilises bigram statistics """
+class Transformer(nn.Module):
+    """ A simplified transformer model from the original paper "Attention is all you need" by Vaswani et al.
+    and the hero to zero series by Karpathy. This model is a decoder only model and thus does not have an encoder. """
 
     def __init__(self):
         super().__init__()
         # each token directly reads off the logits for the next token from a lookup table
         self.token_embdding_table = nn.Embedding(vocab_size, n_embd) # This is the lookup table for the embeddings, maps each token to a dense vector
-        self.position_embdding = nn.Embedding(block_size, n_embd)
+        self.position_embdding = nn.Embedding(block_size, n_embd) # Each position in the sequence also gets it's own embedding
         self.blocks = nn.Sequential(*[Block(n_embd, n_head) for _ in range(n_layer)]) # This is the transformer block, it is a stack of blocks)
         self.ln_f = nn.LayerNorm(n_embd) # This is the final layer normalisation
         self.lm_head = nn.Linear(n_embd, vocab_size) # This is the output layer that maps the dense vector to the vocab size, language model head  
@@ -150,9 +161,7 @@ class BigramLanguageModel(nn.Module):
                     length. NOTE: This is optional and only used during training, if empty the function will return 
                     None for loss and only produce logits. """
         
-        B, T = idx.shape
-        
-        # idx and targets are both (B,T) tensor of integers
+        B, T = idx.shape # idx and targets are both (B,T) tensor of integers
         token_embd = self.token_embdding_table(idx) # (B,T,C) - C is the number of channels, i.e features in the embedding, this maps to n_embd in this example 
         pos_embed = self.position_embdding(torch.arange(T, device=idx.device)) # (T, C) Create a position embedding for each token in the sequence
         pos_embed = pos_embed.unsqueeze(0) # (1, T, C) Add a batch dimension to the position embedding
@@ -213,7 +222,7 @@ class BigramLanguageModel(nn.Module):
     #--------------------------------------------------
 
 
-Model = BigramLanguageModel()
+Model = Transformer()
 Model = Model.to(device)
 optimiser = Model.optimiser()
 
