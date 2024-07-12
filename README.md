@@ -20,3 +20,6 @@ This project implements a transformer decoder-only architecture, closely followi
     git clone https://github.com/your-username/transformer-decoder.git
     cd transformer-decoder
     ```
+## Bigram note - As recommended by Anthropic
+
+There is a seperate script which removes any attentional layers and MLP to soley focus on the bigram statistics. Which, as stated in "A Mathematical Framework for Transformer Circuits" is a good step towards pulling apart transformers. 
