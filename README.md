@@ -4,6 +4,8 @@
 
 This project implements a transformer decoder-only architecture, closely following the "Attention is All You Need" paper by Vaswani et al. It leverages the PyTorch library and is inspired by the "Zero to Hero" series by Andrej Karpathy. The primary goal is to provide a foundational understanding of transformers and to serve as a basis for applying neural data to transformers and conducting mechanistic interpretability.
 
+A second implementation now superceeds the first after learnings from the Arena course. This will hope as an NLP test bed as the second stage in my learnings. Next I will move onto a neural implementation of transformers. 
+
 ## Features
 
 - **Transformer Decoder-Only Architecture**: Implements a transformer model focusing solely on the decoder.
