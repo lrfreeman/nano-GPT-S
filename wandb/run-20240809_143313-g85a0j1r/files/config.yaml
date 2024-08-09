@@ -1,0 +1,42 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.13.10
+    framework: huggingface
+    huggingface_version: 4.42.4
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.11.9
+    start_time: 1723210393.06377
+    t:
+      1:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      2:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      3:
+      - 16
+      - 23
+      4: 3.11.9
+      5: 0.13.10
+      6: 4.42.4
+      8:
+      - 3
+      - 5
+wandb_name:
+  desc: null
+  value: null
+wandb_project:
+  desc: null
+  value: base_transformer

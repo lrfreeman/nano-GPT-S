@@ -1,0 +1,50 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.11.9",
+    "heartbeatAt": "2024-08-09T13:38:40.713256",
+    "startedAt": "2024-08-09T13:38:40.116245",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\44797\\Documents\\nano-GPT-S\\transformer.py",
+    "codePath": "transformer.py",
+    "git": {
+        "remote": "https://github.com/lrfreeman/nano-GPT-S.git",
+        "commit": "f9d108cbdf48a14c102ed42efd3e4d2ef9b11982"
+    },
+    "email": "laurence.freeman@live.co.uk",
+    "root": "C:/Users/44797/Documents/nano-GPT-S",
+    "host": "andromeda",
+    "username": "mrRobot",
+    "executable": "C:\\Users\\44797\\miniconda3\\envs\\arena-env\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4101.0,
+        "min": 0.0,
+        "max": 4101.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4101.0,
+            "min": 0.0,
+            "max": 4101.0
+        }
+    ],
+    "disk": {
+        "total": 953.2495651245117,
+        "used": 914.90234375
+    },
+    "gpu": "NVIDIA GeForce RTX 3070 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3070 Ti",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 15.913330078125
+    }
+}

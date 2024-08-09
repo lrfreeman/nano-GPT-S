@@ -1,0 +1,39 @@
+  0%|                                                                                                                                                                                                                     | 0/20000 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                        | 0/10 [00:00<?, ?it/s]
+Traceback (most recent call last):                                                                                                                                                                                           | 0/10 [00:00<?, ?it/s]
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 250, in <module>
+    trainer.train()
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 192, in train
+    loss = self.training_step(batch)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 157, in training_step
+    logits = self.model(tokens)
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 135, in forward
+    residual_stream = block(residual_stream)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 110, in forward
+    resid_mid = residual_pre + self.attn(normalised_residual_pre)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\torch\nn\modules\module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\44797\Documents\nano-GPT-S\transformer.py", line 71, in forward
+    attention = einops.einsum(Q, K, "batch posn_Q nheads d_head, batch posn_K nheads d_head -> batch nheads posn_Q posn_K") / torch.sqrt(torch.tensor(self.cfg.d_head)) # (B, nheads, T, T)
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU

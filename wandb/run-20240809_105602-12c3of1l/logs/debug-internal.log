@@ -1,0 +1,207 @@
+2024-08-09 10:56:02,748 INFO    StreamThr :12584 [internal.py:wandb_internal():87] W&B internal server running at pid: 12584, started at: 2024-08-09 10:56:02.747697
+2024-08-09 10:56:02,752 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status
+2024-08-09 10:56:02,753 INFO    WriterThread:12584 [datastore.py:open_for_write():85] open: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\run-12c3of1l.wandb
+2024-08-09 10:56:02,756 DEBUG   SenderThread:12584 [sender.py:send():336] send: header
+2024-08-09 10:56:02,787 DEBUG   SenderThread:12584 [sender.py:send():336] send: run
+2024-08-09 10:56:03,227 INFO    SenderThread:12584 [dir_watcher.py:__init__():216] watching files in: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files
+2024-08-09 10:56:03,227 INFO    SenderThread:12584 [sender.py:_start_run_threads():1067] run started: 12c3of1l with start time 1723197362.747696
+2024-08-09 10:56:03,227 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: summary_record
+2024-08-09 10:56:03,228 INFO    SenderThread:12584 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2024-08-09 10:56:03,228 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: check_version
+2024-08-09 10:56:03,228 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: check_version
+2024-08-09 10:56:03,310 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: run_start
+2024-08-09 10:56:03,339 DEBUG   HandlerThread:12584 [system_info.py:__init__():31] System info init
+2024-08-09 10:56:03,339 DEBUG   HandlerThread:12584 [system_info.py:__init__():46] System info init done
+2024-08-09 10:56:03,339 INFO    HandlerThread:12584 [system_monitor.py:start():151] Starting system monitor
+2024-08-09 10:56:03,340 INFO    SystemMonitor:12584 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2024-08-09 10:56:03,341 INFO    HandlerThread:12584 [system_monitor.py:probe():172] Collecting system info
+2024-08-09 10:56:03,348 INFO    SystemMonitor:12584 [interfaces.py:start():168] Started cpu
+2024-08-09 10:56:03,349 INFO    SystemMonitor:12584 [interfaces.py:start():168] Started disk
+2024-08-09 10:56:03,351 INFO    SystemMonitor:12584 [interfaces.py:start():168] Started gpu
+2024-08-09 10:56:03,361 INFO    SystemMonitor:12584 [interfaces.py:start():168] Started memory
+2024-08-09 10:56:03,374 INFO    SystemMonitor:12584 [interfaces.py:start():168] Started network
+2024-08-09 10:56:03,378 DEBUG   HandlerThread:12584 [system_info.py:probe():195] Probing system
+2024-08-09 10:56:03,380 DEBUG   HandlerThread:12584 [system_info.py:_probe_git():180] Probing git
+2024-08-09 10:56:03,452 DEBUG   HandlerThread:12584 [system_info.py:_probe_git():188] Probing git done
+2024-08-09 10:56:03,452 DEBUG   HandlerThread:12584 [system_info.py:probe():241] Probing system done
+2024-08-09 10:56:03,452 DEBUG   HandlerThread:12584 [system_monitor.py:probe():181] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.11.9', 'heartbeatAt': '2024-08-09T09:56:03.379238', 'startedAt': '2024-08-09T09:56:02.731683', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\44797\\Documents\\nano-GPT-S\\transformer.py', 'codePath': 'transformer.py', 'git': {'remote': 'https://github.com/lrfreeman/nano-GPT-S.git', 'commit': 'f9d108cbdf48a14c102ed42efd3e4d2ef9b11982'}, 'email': 'laurence.freeman@live.co.uk', 'root': 'C:/Users/44797/Documents/nano-GPT-S', 'host': 'andromeda', 'username': 'mrRobot', 'executable': 'C:\\Users\\44797\\miniconda3\\envs\\arena-env\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 4101.0, 'min': 0.0, 'max': 4101.0}, 'cpu_freq_per_core': [{'current': 4101.0, 'min': 0.0, 'max': 4101.0}], 'disk': {'total': 953.2495651245117, 'used': 914.6431846618652}, 'gpu': 'NVIDIA GeForce RTX 3070 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3070 Ti', 'memory_total': 8589934592}], 'memory': {'total': 15.913330078125}}
+2024-08-09 10:56:03,452 INFO    HandlerThread:12584 [system_monitor.py:probe():182] Finished collecting system info
+2024-08-09 10:56:03,452 INFO    HandlerThread:12584 [system_monitor.py:probe():185] Publishing system info
+2024-08-09 10:56:03,452 DEBUG   HandlerThread:12584 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-08-09 10:56:03,453 DEBUG   HandlerThread:12584 [system_info.py:_save_pip():67] Saving pip packages done
+2024-08-09 10:56:03,453 DEBUG   HandlerThread:12584 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-08-09 10:56:03,458 ERROR   HandlerThread:12584 [system_info.py:_save_conda():85] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 81, in _save_conda
+    subprocess.call(
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\44797\miniconda3\envs\arena-env\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2024-08-09 10:56:03,460 DEBUG   HandlerThread:12584 [system_info.py:_save_conda():86] Saving conda packages done
+2024-08-09 10:56:03,460 INFO    HandlerThread:12584 [system_monitor.py:probe():187] Finished publishing system info
+2024-08-09 10:56:03,481 DEBUG   SenderThread:12584 [sender.py:send():336] send: files
+2024-08-09 10:56:03,481 INFO    SenderThread:12584 [sender.py:_save_file():1321] saving file wandb-metadata.json with policy now
+2024-08-09 10:56:03,488 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: stop_status
+2024-08-09 10:56:03,488 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: stop_status
+2024-08-09 10:56:03,682 DEBUG   SenderThread:12584 [sender.py:send():336] send: telemetry
+2024-08-09 10:56:04,037 INFO    wandb-upload_0:12584 [upload_job.py:push():138] Uploaded file C:\Users\44797\AppData\Local\Temp\tmpemkn7x3xwandb\qk8i3r0y-wandb-metadata.json
+2024-08-09 10:56:04,238 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_created():275] file/dir created: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:04,238 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_created():275] file/dir created: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-summary.json
+2024-08-09 10:56:04,239 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_created():275] file/dir created: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-metadata.json
+2024-08-09 10:56:04,239 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_created():275] file/dir created: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\requirements.txt
+2024-08-09 10:56:04,239 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_created():275] file/dir created: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\conda-environment.yaml
+2024-08-09 10:56:06,254 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:08,720 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:13,917 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:14,322 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:18,508 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:18,508 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:18,960 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:23,564 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:24,001 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:28,773 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:29,044 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:33,861 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:34,100 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:34,555 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\config.yaml
+2024-08-09 10:56:38,881 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:39,546 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:39,806 DEBUG   SenderThread:12584 [sender.py:send():336] send: exit
+2024-08-09 10:56:39,806 INFO    SenderThread:12584 [sender.py:send_exit():559] handling exit code: 1
+2024-08-09 10:56:39,812 INFO    SenderThread:12584 [sender.py:send_exit():561] handling runtime: 36
+2024-08-09 10:56:39,818 INFO    SenderThread:12584 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2024-08-09 10:56:39,819 INFO    SenderThread:12584 [sender.py:send_exit():567] send defer
+2024-08-09 10:56:39,820 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,820 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 0
+2024-08-09 10:56:39,822 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,822 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 0
+2024-08-09 10:56:39,822 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 1
+2024-08-09 10:56:39,823 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,823 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 1
+2024-08-09 10:56:39,823 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,823 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 1
+2024-08-09 10:56:39,823 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 2
+2024-08-09 10:56:39,823 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,823 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 2
+2024-08-09 10:56:39,824 INFO    HandlerThread:12584 [system_monitor.py:finish():161] Stopping system monitor
+2024-08-09 10:56:39,826 DEBUG   SystemMonitor:12584 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2024-08-09 10:56:39,837 DEBUG   SystemMonitor:12584 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2024-08-09 10:56:39,838 DEBUG   SystemMonitor:12584 [system_monitor.py:_start():141] Publishing last batch of metrics
+2024-08-09 10:56:39,838 INFO    HandlerThread:12584 [interfaces.py:finish():175] Joined cpu
+2024-08-09 10:56:39,842 INFO    HandlerThread:12584 [interfaces.py:finish():175] Joined disk
+2024-08-09 10:56:39,921 INFO    HandlerThread:12584 [interfaces.py:finish():175] Joined gpu
+2024-08-09 10:56:39,922 INFO    HandlerThread:12584 [interfaces.py:finish():175] Joined memory
+2024-08-09 10:56:39,922 INFO    HandlerThread:12584 [interfaces.py:finish():175] Joined network
+2024-08-09 10:56:39,923 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,923 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 2
+2024-08-09 10:56:39,923 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 3
+2024-08-09 10:56:39,923 DEBUG   SenderThread:12584 [sender.py:send():336] send: stats
+2024-08-09 10:56:39,923 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,924 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 3
+2024-08-09 10:56:39,924 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,924 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 3
+2024-08-09 10:56:39,924 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 4
+2024-08-09 10:56:39,924 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,924 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 4
+2024-08-09 10:56:39,925 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,925 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 4
+2024-08-09 10:56:39,925 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 5
+2024-08-09 10:56:39,925 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,925 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 5
+2024-08-09 10:56:39,925 DEBUG   SenderThread:12584 [sender.py:send():336] send: summary
+2024-08-09 10:56:39,926 INFO    SenderThread:12584 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2024-08-09 10:56:39,926 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,926 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 5
+2024-08-09 10:56:39,926 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 6
+2024-08-09 10:56:39,926 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,926 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 6
+2024-08-09 10:56:39,927 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,927 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 6
+2024-08-09 10:56:39,927 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 7
+2024-08-09 10:56:39,927 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: status_report
+2024-08-09 10:56:39,927 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:39,927 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 7
+2024-08-09 10:56:39,927 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:39,927 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 7
+2024-08-09 10:56:40,601 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:40,601 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-summary.json
+2024-08-09 10:56:40,880 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: poll_exit
+2024-08-09 10:56:42,007 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 8
+2024-08-09 10:56:42,007 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: poll_exit
+2024-08-09 10:56:42,007 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:42,009 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 8
+2024-08-09 10:56:42,009 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:42,009 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 8
+2024-08-09 10:56:42,060 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 9
+2024-08-09 10:56:42,061 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:42,061 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 9
+2024-08-09 10:56:42,061 DEBUG   SenderThread:12584 [sender.py:send():336] send: artifact
+2024-08-09 10:56:42,617 INFO    Thread-16 :12584 [dir_watcher.py:_on_file_modified():292] file/dir modified: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:43,185 INFO    wandb-upload_1:12584 [upload_job.py:push():93] Skipped uploading C:\Users\44797\AppData\Local\wandb\wandb\artifacts\staging\tmpknr1wfeg
+2024-08-09 10:56:43,402 INFO    wandb-upload_0:12584 [upload_job.py:push():96] Uploaded file C:\Users\44797\AppData\Local\wandb\wandb\artifacts\staging\tmppv6m_nhf
+2024-08-09 10:56:44,681 INFO    SenderThread:12584 [sender.py:send_artifact():1417] sent artifact job-https___github.com_lrfreeman_nano-GPT-S.git_transformer.py - {'id': 'QXJ0aWZhY3Q6MTEyNDQ0MTc1MQ==', 'digest': '92c7575cc8a3f72bfe5500276c7d61ef', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjM5Mzg3NzU3Mw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTEyNDM2MDYwMw==', 'versionIndex': 0}}, 'version': 'latest'}
+2024-08-09 10:56:44,681 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:44,681 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 9
+2024-08-09 10:56:44,681 INFO    SenderThread:12584 [dir_watcher.py:finish():362] shutting down directory watcher
+2024-08-09 10:56:45,643 INFO    SenderThread:12584 [dir_watcher.py:finish():392] scan: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files
+2024-08-09 10:56:45,643 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\conda-environment.yaml conda-environment.yaml
+2024-08-09 10:56:45,643 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\config.yaml config.yaml
+2024-08-09 10:56:45,644 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log output.log
+2024-08-09 10:56:45,645 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\requirements.txt requirements.txt
+2024-08-09 10:56:45,647 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-metadata.json wandb-metadata.json
+2024-08-09 10:56:45,647 INFO    SenderThread:12584 [dir_watcher.py:finish():406] scan save: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-summary.json wandb-summary.json
+2024-08-09 10:56:45,649 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 10
+2024-08-09 10:56:45,650 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:45,651 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 10
+2024-08-09 10:56:45,652 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:45,653 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 10
+2024-08-09 10:56:45,653 INFO    SenderThread:12584 [file_pusher.py:finish():162] shutting down file pusher
+2024-08-09 10:56:45,921 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: keepalive
+2024-08-09 10:56:46,134 INFO    wandb-upload_1:12584 [upload_job.py:push():138] Uploaded file C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\config.yaml
+2024-08-09 10:56:46,202 INFO    wandb-upload_3:12584 [upload_job.py:push():138] Uploaded file C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\wandb-summary.json
+2024-08-09 10:56:46,208 INFO    wandb-upload_0:12584 [upload_job.py:push():138] Uploaded file C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\output.log
+2024-08-09 10:56:46,214 INFO    wandb-upload_2:12584 [upload_job.py:push():138] Uploaded file C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\files\requirements.txt
+2024-08-09 10:56:46,418 INFO    Thread-15 (_thread_body):12584 [sender.py:transition_state():587] send defer: 11
+2024-08-09 10:56:46,418 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:46,418 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 11
+2024-08-09 10:56:46,418 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:46,418 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 11
+2024-08-09 10:56:46,418 INFO    SenderThread:12584 [file_pusher.py:join():167] waiting for file pusher
+2024-08-09 10:56:46,418 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 12
+2024-08-09 10:56:46,418 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:46,419 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 12
+2024-08-09 10:56:46,419 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:46,419 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 12
+2024-08-09 10:56:46,596 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 13
+2024-08-09 10:56:46,596 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:46,596 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 13
+2024-08-09 10:56:46,596 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:46,596 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 13
+2024-08-09 10:56:46,596 INFO    SenderThread:12584 [sender.py:transition_state():587] send defer: 14
+2024-08-09 10:56:46,597 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: defer
+2024-08-09 10:56:46,597 DEBUG   SenderThread:12584 [sender.py:send():336] send: final
+2024-08-09 10:56:46,597 INFO    HandlerThread:12584 [handler.py:handle_request_defer():170] handle defer: 14
+2024-08-09 10:56:46,597 DEBUG   SenderThread:12584 [sender.py:send():336] send: footer
+2024-08-09 10:56:46,597 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: defer
+2024-08-09 10:56:46,597 INFO    SenderThread:12584 [sender.py:send_request_defer():583] handle sender defer: 14
+2024-08-09 10:56:46,598 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: poll_exit
+2024-08-09 10:56:46,598 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: server_info
+2024-08-09 10:56:46,598 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: get_summary
+2024-08-09 10:56:46,598 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: poll_exit
+2024-08-09 10:56:46,598 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: sampled_history
+2024-08-09 10:56:46,598 DEBUG   SenderThread:12584 [sender.py:send_request():363] send_request: server_info
+2024-08-09 10:56:46,788 INFO    MainThread:12584 [wandb_run.py:_footer_history_summary_info():3442] rendering history
+2024-08-09 10:56:46,789 INFO    MainThread:12584 [wandb_run.py:_footer_history_summary_info():3474] rendering summary
+2024-08-09 10:56:46,808 INFO    MainThread:12584 [wandb_run.py:_footer_sync_info():3398] logging synced files
+2024-08-09 10:56:46,809 DEBUG   HandlerThread:12584 [handler.py:handle_request():144] handle_request: shutdown
+2024-08-09 10:56:46,809 INFO    HandlerThread:12584 [handler.py:finish():841] shutting down handler
+2024-08-09 10:56:47,612 INFO    WriterThread:12584 [datastore.py:close():299] close: C:\Users\44797\Documents\nano-GPT-S\wandb\run-20240809_105602-12c3of1l\run-12c3of1l.wandb
+2024-08-09 10:56:47,798 INFO    SenderThread:12584 [sender.py:finish():1493] shutting down sender
+2024-08-09 10:56:47,798 INFO    SenderThread:12584 [file_pusher.py:finish():162] shutting down file pusher
+2024-08-09 10:56:47,798 INFO    SenderThread:12584 [file_pusher.py:join():167] waiting for file pusher
